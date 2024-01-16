@@ -1,0 +1,17 @@
+body {
+    text-align: center;
+    background-image: url("https://ih1.redbubble.net/image.498979158.6748/pp,550x550.u2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#bunch-of-cute-cats {
+    display:flex;
+    justify-content: center;
+    background-image: linear-gradient(to bottom right, yellow, orange);
+    height: 100%;
+    width: 100%;
+}
+#bunch-of-cute-cats img {
+    Height: 7rem;
+    Width: auto;
+}
