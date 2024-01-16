@@ -1,16 +1,39 @@
 document.addEventListener('DOMContentLoaded', () => {
   const addCatButton = document.getElementById('addCatButton');
-  addCatButton.addEventListener('click', add);
+  addCatButton.addEventListener('click', addCat);
 });
 
 const catUrl = 'http://localhost:3000/data'; // Use the correct URL
 
 function addCat() {
-  const breedName = prompt("enter the breed name of the cat!:");
-  const height = prompt("Enter the height of the cat!:");
-  const weight = prompt("Enter the weight of the cat!:");
-  const physicalCharacteristics = prompt("Enter the physical characteristics of the cat!:");
-  
+  const breedName = prompt("Enter the breed name of the cat:");
+  const height = prompt("Enter the height of the cat:");
+  const weight = prompt("Enter the weight of the cat:");
+  const physicalCharacteristics = prompt("Enter the physical characteristics of the cat:");
+
+  const catData = {
+    'Breed-Name': breedName,
+    Height: height,
+    Weight: weight,
+    'Physical-Characteristics': physicalCharacteristics
+  };
+
+  fetch(catUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(catData)
+  })
+    .then(response => response.json())
+    .then(newCat => {
+      const container = document.getElementById('catCard');
+      const card = generateCatCard(newCat);
+      container.appendChild(card);
+    })
+    .catch(error => {
+      console.error('Error adding cat:', error);
+    });
 }
 
 function generateCatCard(cat) {
@@ -26,10 +49,10 @@ function generateCatCard(cat) {
   return card;
 }
 
-fetch(catDataUrl)
+fetch(catUrl)
   .then(response => response.json())
   .then(jsonData => {
-    const container = document.getElementById('catCard'); 
+    const container = document.getElementById('catCard');
     jsonData.data.forEach(cat => {
       const card = generateCatCard(cat);
       container.appendChild(card);

@@ -4,41 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Cat Breed Organizer</title>
-   </head>
-   <style>
+</head>
+<style>
+    body {
+        text-align: center;
+        background-image: url("https://ih1.redbubble.net/image.498979158.6748/pp,550x550.u2.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 
-        body {
-            text-align: center;
-            background-image: url("https://ih1.redbubble.net/image.498979158.6748/pp,550x550.u2.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
-        #bunch-of-cute-cats {
-            display:flex;
-            justify-content: center;
-            background-image: linear-gradient(to bottom right, yellow, orange);
-            height: 100%;
-            width: 100%;
-        }
-        #bunch-of-cute-cats-img {
-            height: 7rem;
-            width: auto;
-        }
-        .cat-finder {
-            display: block;
-            text-align: center;
-            max-width: 200px;
-            margin: 0 auto;
-            border: 2px solid black;
-            border-radius: 5px;
-            background-color: white;
-        }
-    </style>
+    #bunch-of-cute-cats {
+        display:flex;
+        justify-content: center;
+        background-image: linear-gradient(to bottom right, yellow, orange);
+        height: 100%;
+        width: 100%;
+    }
 
+    #bunch-of-cute-cats-img {
+        height: 7rem;
+        width: auto;
+    }
+
+    .cat-finder {
+        display: block;
+        text-align: center;
+        max-width: 200px;
+        margin: 0 auto;
+        border: 2px solid black;
+        border-radius: 5px;
+        background-color: white;
+    }
+</style>
 <body>
     <div class="cat-finder">
         <h1>Look for the cutest Cat</h1>
         <input id="searchInput" type="text" placeholder="Enter Cat Breed" />
+        <input id="imageInput" type="text" placeholder="Enter Image URL" />
+        <div>
+            <input id="heightInput" type="text" placeholder="Enter Height" />
+            <input id="weightInput" type="text" placeholder="Enter Weight" />
+            <input id="characteristicsInput" type="text" placeholder="Enter Characteristics" />
+        </div>
         <button id="searchButton">Search</button>
     </div>
 
