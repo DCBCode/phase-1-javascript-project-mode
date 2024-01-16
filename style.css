@@ -12,8 +12,8 @@ body {
     width: 100%;
 }
 #bunch-of-cute-cats img {
-    Height: 3rem;
-    Width: auto;
+    height: 7rem;
+    width: auto;
 }
 .cat-finder {
     display: block;
