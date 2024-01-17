@@ -1,38 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const addCatButton = document.getElementById('addCatButton');
-  addCatButton.addEventListener('click', addCat);
+  const searchButton = document.getElementById('searchButton');
+  searchButton.addEventListener('click', searchCat);
+  fetchCatData(); // Fetch and display existing cat data on page load
 });
 
-const catUrl = 'http://localhost:3000/data'; // Use the correct URL
+const catUrl = 'http://localhost:3000/cats'; // Replace with the correct server URL
 
-function addCat() {
-  const breedName = prompt("Enter the breed name of the cat:");
-  const height = prompt("Enter the height of the cat:");
-  const weight = prompt("Enter the weight of the cat:");
-  const physicalCharacteristics = prompt("Enter the physical characteristics of the cat:");
+function searchCat() {
+  const searchTerm = document.getElementById('addInput').value.toLowerCase();
 
-  const catData = {
-    'Breed-Name': breedName,
-    Height: height,
-    Weight: weight,
-    'Physical-Characteristics': physicalCharacteristics
-  };
-
-  fetch(catUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(catData)
-  })
+  fetch(catUrl)
     .then(response => response.json())
-    .then(newCat => {
+    .then(jsonData => {
       const container = document.getElementById('catCard');
-      const card = generateCatCard(newCat);
-      container.appendChild(card);
+      container.innerHTML = ''; // Clear previous cat cards
+
+      jsonData.data.forEach(cat => {
+        const breedName = cat['Breed-Name'].toLowerCase();
+        if (breedName.includes(searchTerm)) {
+          const card = generateCatCard(cat);
+          container.appendChild(card);
+        }
+      });
     })
     .catch(error => {
-      console.error('Error adding cat:', error);
+      console.error('Error fetching cat data:', error);
+    });
+}
+
+function fetchCatData() {
+  fetch(catUrl)
+    .then(response => response.json())
+    .then(jsonData => {
+      const container = document.getElementById('catCard');
+      container.innerHTML = ''; // Clear previous cat cards
+
+      jsonData.data.forEach(cat => {
+        const card = generateCatCard(cat);
+        container.appendChild(card);
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching cat data:', error);
     });
 }
 
@@ -47,17 +56,19 @@ function generateCatCard(cat) {
     <p>Physical Characteristics: ${cat['Physical-Characteristics']}</p>
   `;
   return card;
-}
+};
+const express = require('express');
+   const cors = require('cors');
 
-fetch(catUrl)
-  .then(response => response.json())
-  .then(jsonData => {
-    const container = document.getElementById('catCard');
-    jsonData.data.forEach(cat => {
-      const card = generateCatCard(cat);
-      container.appendChild(card);
-    });
-  })
-  .catch(error => {
-    console.error(error);
-  });
+   const app = express();
+
+   // Enable all CORS requests
+   app.use(cors());
+
+   // ... your other middleware and routes ...
+
+   // Start the server
+   const port = 3000;
+   app.listen(port, () => {
+     console.log(`Server is running on port ${port}`);
+   });
