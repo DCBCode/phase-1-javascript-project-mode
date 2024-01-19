@@ -47,7 +47,7 @@ function fetchCatData() {
 
 function generateCatCard(cat) {
   const card = document.createElement('div');
-  card.classList.add('card');
+  card.classList.add('card', 'cat-card'); // Add the 'cat-card' class
   card.innerHTML = `
     <img src="${cat.Picture}" alt="${cat['Breed-Name']}" />
     <h2>${cat['Breed-Name']}</h2>
@@ -56,20 +56,27 @@ function generateCatCard(cat) {
     <p>Physical Characteristics: ${cat['Physical-Characteristics']}</p>
     <button class="likeButton">Like</button>
     <button class="dislikeButton">Dislike</button>
-    <span class="likeCount">0</span>`;
+    <span class="likeCount">0</span>
+    <button class="deleteButton">Delete</button>`;
 
   const likeButton = card.querySelector('.likeButton');
   const dislikeButton = card.querySelector('.dislikeButton');
   const likeCount = card.querySelector('.likeCount');
+  const deleteButton = card.querySelector('.deleteButton');
   let count = 0;
 
   likeButton.addEventListener('click', () => {
     count++;
     likeCount.textContent = count;
   });
+
   dislikeButton.addEventListener('click', () => {
     count--;
     likeCount.textContent = count;
+  });
+
+  deleteButton.addEventListener('click', () => {
+    card.remove(); // Remove the cat card from the DOM
   });
 
   return card;
