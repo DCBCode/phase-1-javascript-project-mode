@@ -64,7 +64,7 @@ function generateCatCard(cat) {
   const card = document.createElement('div');
   card.classList.add('card', 'cat-card'); // Add the 'cat-card' class
   card.innerHTML = `
-    <img src="${cat.Picture}" alt="${cat['Breed-Name']}" />
+    <img src="${cat.Picture}" alt="${cat['Breed-Name']}" style="width: 750px; height: 500px;" />
     <h2>${cat['Breed-Name']}</h2>
     <p>Height: ${cat.Height}</p>
     <p>Weight: ${cat.Weight}</p>
