@@ -19,12 +19,13 @@ body {
 }
 .cat-finder {
     display: block;
-    text-allign: center;
+    text-align: center;
     max-width: 200px;
     margin: 0 auto;
     border: 2px solid black;
     border-radius: 5px;
     background-color: white;
+    padding: 20px;
 }
 .cat-card {
     display: block;
