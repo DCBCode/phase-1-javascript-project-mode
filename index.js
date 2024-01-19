@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   fetchCatData(); // Fetch and display existing cat data on page load
 });
 
-const catUrl = 'http://localhost:3000/cats'; // Replace with the correct server URL
+const catUrl = 'http://localhost:3000/data'; // Replace with the correct server URL
 
 function searchCat() {
   const searchTerm = document.getElementById('addInput').value.toLowerCase();
@@ -15,7 +15,7 @@ function searchCat() {
       const container = document.getElementById('catCard');
       container.innerHTML = ''; // Clear previous cat cards
 
-      jsonData.data.forEach(cat => {
+      jsonData.forEach(cat => {
         const breedName = cat['Breed-Name'].toLowerCase();
         if (breedName.includes(searchTerm)) {
           const card = generateCatCard(cat);
@@ -35,7 +35,7 @@ function fetchCatData() {
       const container = document.getElementById('catCard');
       container.innerHTML = ''; // Clear previous cat cards
 
-      jsonData.data.forEach(cat => {
+      jsonData.forEach(cat => {
         const card = generateCatCard(cat);
         container.appendChild(card);
       });
@@ -54,21 +54,57 @@ function generateCatCard(cat) {
     <p>Height: ${cat.Height}</p>
     <p>Weight: ${cat.Weight}</p>
     <p>Physical Characteristics: ${cat['Physical-Characteristics']}</p>
-  `;
+    <button class="likeButton">Like</button>
+    <button class="dislikeButton">Dislike</button>
+    <span class="likeCount">0</span>`;
+
+  const likeButton = card.querySelector('.likeButton');
+  const dislikeButton = card.querySelector('.dislikeButton');
+  const likeCount = card.querySelector('.likeCount');
+  let count = 0;
+
+  likeButton.addEventListener('click', () => {
+    count++;
+    likeCount.textContent = count;
+  });
+  dislikeButton.addEventListener('click', () => {
+    count--;
+    likeCount.textContent = count;
+  });
+
   return card;
 };
-const express = require('express');
-   const cors = require('cors');
 
-   const app = express();
+const addCatButton = document.getElementById('catButton');
+addCatButton.addEventListener('click', addCat);
 
-   // Enable all CORS requests
-   app.use(cors());
+function addCat() {
+  const breedName = document.getElementById('addInput').value;
+  const height = document.getElementById('heightInput').value;
+  const weight = document.getElementById('weightInput').value;
+  const characteristics = document.getElementById('characteristicsInput').value;
+  const picture = document.getElementById('imageInput').value;
 
-   // ... your other middleware and routes ...
+  const newCat = {
+    "Breed-Name": breedName,
+    "Height": height,
+    "Weight": weight,
+    "Physical-Characteristics": characteristics,
+    "Picture": picture
+  };
 
-   // Start the server
-   const port = 3000;
-   app.listen(port, () => {
-     console.log(`Server is running on port ${port}`);
-   });
+  fetch(catUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newCat)
+  })
+    .then(response => response.json())
+    .then(addedCat => {
+      // Handle the response, such as displaying the added cat card on the page
+    })
+    .catch(error => {
+      console.error('Error adding cat:', error);
+    });
+}
