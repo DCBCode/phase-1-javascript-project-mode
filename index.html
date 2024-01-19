@@ -25,7 +25,7 @@
         height: 7rem;
         width: auto;
     }
-    
+
     .cat-finder {
         display: block;
         text-align: center;
@@ -35,8 +35,16 @@
         border-radius: 5px;
         background-color: white;
     }
+
+    /* New CSS class for cat card container */
+    .cat-card {
+        background-color: white;
+        padding: 20px;
+        /* Add any additional styles you want for the card container */
+    }
 </style>
 <body>
+
     <div class="cat-finder">
         <h1>Look for the cutest Cat</h1>
         <input id="addInput" type="text" placeholder="Enter Cat Breed" />
@@ -47,16 +55,16 @@
             <input id="characteristicsInput" type="text" placeholder="Enter Characteristics" />
         </div>
         <button id="searchButton">Search</button>
-<button id="catButton"> Add Cat</button>
+        <button id="catButton">Add Cat</button>
     </div>
 
     <div id="bunch-of-cute-cats">
         <img id="bunch-of-cute-cats-img" src="https://images8.alphacoders.com/685/thumb-1920-685252.jpg" alt="bunch-of-cute-cats" />
     </div>
 
-    <div id="catCard"></div>
+    <div id="catCard" class="cat-card"></div>
 
     <script src="index.js"></script>
-    
+
 </body>
 </html>
