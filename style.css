@@ -2,8 +2,10 @@ body {
     text-align: center;
     background-image: url("https://ih1.redbubble.net/image.498979158.6748/pp,550x550.u2.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
-}
+    background-size: contain;
+    background-position: center;
+  }
+  
 #bunch-of-cute-cats {
     display:flex;
     justify-content: center;
@@ -33,4 +35,10 @@ body {
     border-radius: 5px;
     background-color: white;
     margin-bottom: 20px;
+  }
+  .cat-card img {
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+
   }

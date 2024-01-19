@@ -38,6 +38,21 @@ function fetchCatData() {
       jsonData.forEach(cat => {
         const card = generateCatCard(cat);
         container.appendChild(card);
+
+        // Retrieve and display existing comments for the cat
+        fetch(`${catUrl}/${cat.id}/comments`)
+          .then(response => response.json())
+          .then(comments => {
+            const commentList = card.querySelector('.commentList');
+            comments.forEach(comment => {
+              const commentItem = document.createElement('li');
+              commentItem.textContent = comment.comment;
+              commentList.appendChild(commentItem);
+            });
+          })
+          .catch(error => {
+            console.error('Error fetching comments:', error);
+          });
       });
     })
     .catch(error => {
@@ -54,6 +69,11 @@ function generateCatCard(cat) {
     <p>Height: ${cat.Height}</p>
     <p>Weight: ${cat.Weight}</p>
     <p>Physical Characteristics: ${cat['Physical-Characteristics']}</p>
+    <div class="comments">
+      <input type="text" class="commentInput" placeholder="Add a comment" />
+      <button class="commentButton">Add Comment</button>
+      <ul class="commentList"></ul>
+    </div>
     <button class="likeButton">Like</button>
     <button class="dislikeButton">Dislike</button>
     <span class="likeCount">0</span>
@@ -79,8 +99,22 @@ function generateCatCard(cat) {
     card.remove(); // Remove the cat card from the DOM
   });
 
+  const commentButton = card.querySelector('.commentButton');
+  const commentInput = card.querySelector('.commentInput');
+  const commentList = card.querySelector('.commentList');
+
+  commentButton.addEventListener('click', () => {
+    const commentText = commentInput.value;
+    if (commentText) {
+      const commentItem = document.createElement('li');
+      commentItem.textContent = commentText;
+      commentList.appendChild(commentItem);
+      commentInput.value = '';
+    }
+  });
+
   return card;
-};
+}
 
 const addCatButton = document.getElementById('catButton');
 addCatButton.addEventListener('click', addCat);
@@ -109,7 +143,9 @@ function addCat() {
   })
     .then(response => response.json())
     .then(addedCat => {
-      // Handle the response, such as displaying the added cat card on the page
+      const container = document.getElementById('catCard');
+      const card = generateCatCard(addedCat);
+      container.appendChild(card);
     })
     .catch(error => {
       console.error('Error adding cat:', error);
