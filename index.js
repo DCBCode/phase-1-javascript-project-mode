@@ -19,7 +19,7 @@ function searchCat() {
         const breedName = cat['Breed-Name'].toLowerCase();
         if (breedName.includes(searchTerm)) {
           const card = generateCatCard(cat);
-          container.appendChild(card);
+          container.prepend(card); // Add the card to the beginning of the container
         }
       });
     })
