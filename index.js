@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   const searchButton = document.getElementById('searchButton');
   searchButton.addEventListener('click', searchCat);
-  fetchCatData(); // Fetch and display existing cat data on page load
+  fetchCatData(); // fetches existing data on cat card
 });
 
-const catUrl = 'http://localhost:3000/data'; // Replace with the correct server URL
+const catUrl = 'http://localhost:3000/data'; // Where it is pulling Data from to display on webpage
 
 function searchCat() {
   const searchTerm = document.getElementById('addInput').value.toLowerCase();
@@ -13,7 +13,7 @@ function searchCat() {
     .then(response => response.json())
     .then(jsonData => {
       const container = document.getElementById('catCard');
-      container.innerHTML = ''; // Clear previous cat cards
+      container.innerHTML = ''; // code is using fetch finction to make a request to catUrl, then sets the innerhtml to an empty string
 
       jsonData.forEach(cat => {
         const breedName = cat['Breed-Name'].toLowerCase();
@@ -25,7 +25,7 @@ function searchCat() {
     })
     .catch(error => {
       console.error('Error fetching cat data:', error);
-    });
+    });//gives error if error occurs
 }
 
 function fetchCatData() {
@@ -62,8 +62,12 @@ function fetchCatData() {
 
 function generateCatCard(cat) {
   const card = document.createElement('div');
-  card.classList.add('card', 'cat-card'); // Add the 'cat-card' class
-  card.innerHTML = `
+  card.classList.add('card', 'cat-card'); // adds the cat card class
+  const contentWrapper = document.createElement('div');
+  contentWrapper.classList.add('card-content'); // adds the card content class for styling
+
+  // adds the cat card content within the content wrapper
+  contentWrapper.innerHTML = `
     <img src="${cat.Picture}" alt="${cat['Breed-Name']}" style="width: 750px; height: 500px;" />
     <h2>${cat['Breed-Name']}</h2>
     <p>Height: ${cat.Height}</p>
@@ -78,6 +82,8 @@ function generateCatCard(cat) {
     <button class="dislikeButton">Dislike</button>
     <span class="likeCount">0</span>
     <button class="deleteButton">Delete</button>`;
+
+  card.appendChild(contentWrapper); // adds the content wrapper to the card
 
   const likeButton = card.querySelector('.likeButton');
   const dislikeButton = card.querySelector('.dislikeButton');
@@ -103,7 +109,7 @@ function generateCatCard(cat) {
     })
       .then(response => {
         if (response.ok) {
-          card.remove(); // Remove the cat card from the DOM
+          card.remove(); // removes cat card from dom 
         } else {
           throw new Error('Failed to delete cat');
         }
@@ -138,7 +144,7 @@ function addCat() {
   const height = document.getElementById('heightInput').value;
   const weight = document.getElementById('weightInput').value;
   const characteristics = document.getElementById('characteristicsInput').value;
-  const picture = document.getElementById('imageInput').value;
+  const picture = document.getElementById('imageInput').value;// adds cat with correct values
 
   const newCat = {
     "Breed-Name": breedName,
@@ -161,7 +167,7 @@ function addCat() {
       const card = generateCatCard(addedCat);
       container.appendChild(card);
 
-      // Clear the input fields
+     
       document.getElementById('addInput').value = '';
       document.getElementById('heightInput').value = '';
       document.getElementById('weightInput').value = '';
