@@ -36,10 +36,18 @@ body {
     border-radius: 5px;
     background-color: white;
     margin-bottom: 20px;
-  }
-  .cat-card img {
-    height: auto;
-    width: 100%;
+    padding: 20px; /* Add this line to add padding to the card */
+    /* Add any additional styles you want for the card container */
+}
+  
+.cat-card img {
+    width: 750px;
+    height: 500px;
     object-fit: cover;
+}
 
+.card.cat-card {
+    height: 200px; /* Set the same fixed height value as the other cards */
+    width: 100%; /* Make the width 100% to match the container */
+    /* Add any additional styles you want for the cat card */
   }

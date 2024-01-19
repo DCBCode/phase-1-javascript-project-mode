@@ -96,7 +96,21 @@ function generateCatCard(cat) {
   });
 
   deleteButton.addEventListener('click', () => {
-    card.remove(); // Remove the cat card from the DOM
+    const catId = cat.id;
+
+    fetch(`${catUrl}/${catId}`, {
+      method: 'DELETE',
+    })
+      .then(response => {
+        if (response.ok) {
+          card.remove(); // Remove the cat card from the DOM
+        } else {
+          throw new Error('Failed to delete cat');
+        }
+      })
+      .catch(error => {
+        console.error('Error deleting cat:', error);
+      });
   });
 
   const commentButton = card.querySelector('.commentButton');
@@ -146,6 +160,13 @@ function addCat() {
       const container = document.getElementById('catCard');
       const card = generateCatCard(addedCat);
       container.appendChild(card);
+
+      // Clear the input fields
+      document.getElementById('addInput').value = '';
+      document.getElementById('heightInput').value = '';
+      document.getElementById('weightInput').value = '';
+      document.getElementById('characteristicsInput').value = '';
+      document.getElementById('imageInput').value = '';
     })
     .catch(error => {
       console.error('Error adding cat:', error);
