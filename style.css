@@ -36,8 +36,7 @@ body {
     border-radius: 5px;
     background-color: white;
     margin-bottom: 20px;
-    padding: 20px; /* Add this line to add padding to the card */
-    /* Add any additional styles you want for the card container */
+    padding: 20px; 
 }
   
 .cat-card img {
@@ -47,7 +46,12 @@ body {
 }
 
 .card.cat-card {
-    height: 200px; /* Set the same fixed height value as the other cards */
-    width: 100%; /* Make the width 100% to match the container */
-    /* Add any additional styles you want for the cat card */
+    height: 200px; 
+    width: 100%; 
+    
+  }
+
+  .card-content {
+    border: 2px solid white;
+    padding: 20px;
   }
