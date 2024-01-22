@@ -14,7 +14,8 @@ function searchCat() {
     .then(jsonData => {
       const container = document.getElementById('catCard');
       container.innerHTML = ''; // code is using fetch finction to make a request to catUrl, then sets the innerhtml to an empty string
-
+      console.log(jsonData)
+      
       jsonData.forEach(cat => {
         const breedName = cat['Breed-Name'].toLowerCase();
         if (breedName.includes(searchTerm)) {
