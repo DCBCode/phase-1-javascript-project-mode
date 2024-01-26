@@ -8,6 +8,7 @@
  You will also be able to comment something you like or dislike about the cat.
  you will also be able to add new cat breeds that may have just been discovered.
  you will also be able to hide cat breeds you dont want too see anymore.
+ you are also able to add any comments to any of the cats, to say what you like or dislike about them!
 
 Sources: https://www.thesprucepets.com/most-popular-cat-breeds-554221
 https://www.thesprucepets.com/thmb/s5fTWli_jkBO-E4NafQYTsJkN7g=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/rosso-165827729-591080203df78c9283d0f306.jpg"
