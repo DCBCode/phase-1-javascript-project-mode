@@ -1,14 +1,20 @@
- The Cat Organizer!
+Phase 1 read me 
 
 
- My Phase 1 Project is creating a page that has a bunch of different cat breeds.git
+The Cat Organizer!
+
+
+
+
+ My Phase 1 Project is creating a page that has a bunch of different cat breeds and having a way to add a cat delete cats you might not like, and even add your comment and decide the amount of likes or dislikes for each cat!
  
  
- On the page you will be able to like your favorite cat.
- You will also be able to comment something you like or dislike about the cat.
+ On the page, you will be able to like your favorite cat.
+ You will also be able to comment on something you like or dislike about the cat.
  you will also be able to add new cat breeds that may have just been discovered.
- you will also be able to hide cat breeds you dont want too see anymore.
+ you will also be able to hide cat breeds you don't want to see anymore.
  you are also able to add any comments to any of the cats, to say what you like or dislike about them!
+
 
 Sources: https://www.thesprucepets.com/most-popular-cat-breeds-554221
 https://www.thesprucepets.com/thmb/s5fTWli_jkBO-E4NafQYTsJkN7g=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/rosso-165827729-591080203df78c9283d0f306.jpg"
@@ -21,3 +27,5 @@ https://www.thesprucepets.com/thmb/w5VC2iV8FnCbvjz_nPPjJjiQG-w=/750x0/filters:no
 https://www.thesprucepets.com/thmb/YpWcBGStta1--KJ9o11JiDGFIMw=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/scottish-fold-scratch-post-5a0f4ad3494ec9003791fe3b.jpg"
 https://www.thesprucepets.com/thmb/DPRZW9AgVbH7puTsgEiMtkpX-ig=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Stocksy_txpe3e966aau8r100_Medium_1128816-5a9426131d64040037fe58bc.jpg"
 https://www.thesprucepets.com/thmb/cj5BZWn9zzLrYXFg979qClOlKjs=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/sphynxcat-on-a-vintage-chair-578970031-591080af5f9b586470ce0e21.jpg"
+
+
