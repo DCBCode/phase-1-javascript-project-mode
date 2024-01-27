@@ -92,12 +92,12 @@ function generateCatCard(cat) {
   const deleteButton = card.querySelector('.deleteButton');
   let count = 0;
 
-  likeButton.addEventListener('click', () => {
+  likeButton.addEventListener('mouseover', () => {
     count++;
     likeCount.textContent = count;
   });
 
-  dislikeButton.addEventListener('click', () => {
+  dislikeButton.addEventListener('mouseover', () => {
     count--;
     likeCount.textContent = count;
   });
